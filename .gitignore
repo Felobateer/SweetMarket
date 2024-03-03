@@ -1,0 +1,22 @@
+# ASP.NET:
+bin/
+obj/
+
+# Vue.js (Vite):
+node_modules/
+dist/
+
+# React Native:
+android/app/build/
+ios/build/
+
+# Common ignores for all projects:
+.vscode/
+.idea/
+*.suo
+*.sln
+*.sublime-project
+*.sublime-workspace
+.env
+__tests__/
+*.test.js
