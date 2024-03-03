@@ -1,0 +1,167 @@
+{
+  "Offers": [
+    {
+      "id": "O1",
+      "name": "Small weekend snack mix",
+      "description": "With small weekend snack mix, you can have 2 chocolate bars, 1 ice-cream cone, and a piece of cake.",
+      "price": 12.49,
+      "img": "./img/weekend-snack.jpg"
+    },
+    {
+      "id": "O2",
+      "name": "Medium weekend snack mix",
+      "description": "this offer comes with 4 chocolate bars, 2 ice-cream cones, and a small cake.",
+      "price": 24.99,
+      "img": "./img/weekend-snack0.jpg"
+    },
+    {
+      "id": "O3",
+      "name": "Big weekend snack mix",
+      "description": "this mix comes with 5 chocolate bars, ice-cream bucket, and a cake. we hope you enjoy you and your family or friends this mix",
+      "price": 39.99,
+      "img": "./img/weekend-snack2.jpg"
+    },
+    {
+      "id": "O4",
+      "name": "The 2 in 1 deal",
+      "description": "In this box you have your favorite ice-cream cone with a piece of cake",
+      "price": 14.99,
+      "img": "./img/2in1.jpg"
+    },
+    {
+      "id": "O5",
+      "name": "The 3 chocolate deal",
+      "description": "In this box, you have 1 white chocolate bar, 1 milk chocolate bar, and 1 dark chocolate bar.",
+      "price": 14.99,
+      "img": "./img/3choco.jpg"
+    },
+    {
+      "id": "O6",
+      "name": "Haloween",
+      "description": "This is our offer of 20 chocolate bars only in haloween.",
+      "price": 59.99,
+      "img": "./img/haloween.jpg"
+    },
+    {
+      "id": "O7",
+      "name": "Summer Bundle",
+      "description": "For this hot summer, you can enjoy our summer bundle with 10 ice-cream cones and 3 buckets of your choice.",
+      "price": 54.99,
+      "img": "./img/summer-bundle.jpg"
+    },
+    {
+      "id": "O8",
+      "name": "The birthday offer",
+      "description": "We wish you a happy birthday and we offer you for this special occation the birthday offer. With a cake and 3 chocolate bars and 3 ice-cream cones or 1 ice-cream bucket.",
+      "price": 34.99,
+      "img": "./img/birthday.jpg"
+    },
+    {
+      "id": "O9",
+      "name": "Party Sweets",
+      "description": "With this offer you get 6 chocolates of your choice, 6 ice-cream cones, and a cake or extra 3 chocolates or cones. All up to you",
+      "price": 49.99,
+      "img": "./img/party-sweets.jpg"
+    }
+  ],
+  "BestSeller": [
+    {
+      "id": "BS1",
+      "name": "Milka white chocolate",
+      "price": 1.99,
+      "img": "./img/white-choco.jpg"
+    },
+    {
+      "id": "BS2",
+      "name": "Milka milk chocolate",
+      "price": 1.99,
+      "img": "./img/milk-choco.jpg"
+    },
+    {
+      "id": "BS3",
+      "name": "Milka dark chocolate",
+      "price": 1.99,
+      "img": "./img/dark-choco.jpg"
+    },
+    {
+      "id": "BS4",
+      "name": "Ja vanilla ice-cream cone",
+      "price": 1.49,
+      "img": "./img/vanilla-cone.jpg"
+    },
+    {
+      "id": "BS5",
+      "name": "Ja chocolate ice-cream cone",
+      "price": 1.49,
+      "img": "./img/choco-cone.jpg"
+    },
+    {
+      "id": "BS6",
+      "name": "Piece of chocolate cake (250g)",
+      "price": 1.99,
+      "img": "./img/pcake.jpg"
+    },
+    {
+      "id": "BS7",
+      "name": "Piece of fruit cake (250g)",
+      "price": 1.99,
+      "img": "./img/fruitcake.jpg"
+    },
+    {
+      "id": "BS8",
+      "name": "Birthday Cake (1120g)",
+      "price": 9.99,
+      "img": "./img/birthday.jpg"
+    }
+  ],
+  "merchendise": [
+    {
+      "id": "M1",
+      "name": "Milka hazelnut chocolate",
+      "price": 3.99,
+      "img": "./img/nut-choco.jpg"
+    },
+    {
+      "id": "M2",
+      "name": "Milka biscuit chocolate",
+      "price": 3.99,
+      "img": "./img/biscuit-choco.jpg"
+    },
+    {
+      "id": "M3",
+      "name": "Milka bubble chocolate",
+      "price": 3.99,
+      "img": "./img/bubble-choco.jpg"
+    },
+    {
+      "id": "M4",
+      "name": "Milka oreo chocolate",
+      "price": 3.99,
+      "img": "./img/oreo-choco.jpg"
+    },
+    {
+      "id": "M5",
+      "name": "Milka chocolate Jar",
+      "price": 4.99,
+      "img": "./img/jar-choco.jpg"
+    },
+    {
+      "id": "M6",
+      "name": "Ja 3 flavor ice-cream bucket",
+      "price": 4.99,
+      "img": "./img/3flavor-bucket.jpg"
+    },
+    {
+      "id": "M7",
+      "name": "Fruit Cake (1500g)",
+      "price": 19.99,
+      "img": "./img/fruitcake.jpg"
+    },
+    {
+      "id": "M8",
+      "name": "Chocolate Cake (1500g)",
+      "price": 19.99,
+      "img": "./img/pcake.jpg"
+    }
+  ]
+}

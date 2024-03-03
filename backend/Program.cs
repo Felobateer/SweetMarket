@@ -1,7 +1,14 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddControllers(); // Add controllers support
+
+// Add your services
+builder.Services.AddScoped(typeof(MyServices)); // Add MyServices to the service container
 
 var app = builder.Build();
 
@@ -20,6 +27,12 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapRazorPages();
+// Register your controllers
+app.UseEndpoints(endpoints =>
+{
+    // Map controllers endpoints
+    endpoints.MapControllers();
+});
 
 app.Run();
+
