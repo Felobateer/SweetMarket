@@ -1,14 +1,31 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Services;
+using Database;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.HttpsPolicy;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers(); // Add controllers support
+builder.Services.AddControllers();
+builder.Configuration.AddJsonFile("appsettings.json");
 
-// Add your services
-builder.Services.AddScoped(typeof(MyServices)); // Add MyServices to the service container
+// Retrieve the connection string from appsettings.json
+string connectionString = builder.Configuration.GetConnectionString("Default");
+
+// Check if the connectionString is null or empty before registering it as a singleton
+if (!string.IsNullOrEmpty(connectionString))
+{
+    builder.Services.AddSingleton(connectionString);
+    builder.Services.AddSingleton<MyDb>();
+    builder.Services.AddScoped<MyServices>(); 
+}
+else
+{
+    // Log or handle the error when connectionString is null or empty
+    Console.WriteLine("Error: Connection string is null or empty.");
+}
 
 var app = builder.Build();
 
@@ -16,9 +33,13 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+app.UseCors(builder => builder
+.AllowAnyOrigin()
+.AllowAnyHeader()
+.AllowAnyMethod());
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -27,10 +48,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-// Register your controllers
 app.UseEndpoints(endpoints =>
 {
-    // Map controllers endpoints
     endpoints.MapControllers();
 });
 

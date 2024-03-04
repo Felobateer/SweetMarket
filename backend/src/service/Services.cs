@@ -17,33 +17,45 @@ namespace Services
         }
         public async Task InsertData(string jsonData)
         {
-            using (MySqlConnection connection = new MySqlConnection(_connectionString))
+            // Check if the Products table is empty
+            if (!_context.Products.Any())
             {
-                await connection.OpenAsync();
-                foreach (var category in JsonSerializer.Deserialize<Dictionary<string, List<Product>>>(jsonData))
+                // Products table is empty, proceed with inserting data
+                using (MySqlConnection connection = new MySqlConnection(_connectionString))
                 {
-                    string categoryName = category.Key;
-                    List<Product> products = category.Value;
-
-                    foreach (var product in products)
+                    await connection.OpenAsync();
+                    foreach (var category in JsonSerializer.Deserialize<Dictionary<string, List<Product>>>(jsonData))
                     {
-                        string insertQuery = $"INSERT INTO {categoryName} (id, name, description, price, img) VALUES (@id, @name, @description, @price, @img)";
+                        string categoryName = category.Key;
+                        List<Product> products = category.Value;
 
-                        using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+                        foreach (var product in products)
                         {
-                            command.Parameters.AddWithValue("@id", product.id);
-                            command.Parameters.AddWithValue("@name", product.name);
-                            command.Parameters.AddWithValue("@description", product.description);
-                            command.Parameters.AddWithValue("@price", product.price);
-                            command.Parameters.AddWithValue("@img", product.img);
+                            string insertQuery = $"INSERT INTO {categoryName} (id, name, description, price, img) VALUES (@id, @name, @description, @price, @img)";
 
-                            await command.ExecuteNonQueryAsync();
+                            using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
+                            {
+                                command.Parameters.AddWithValue("@id", product.id);
+                                command.Parameters.AddWithValue("@name", product.name);
+                                command.Parameters.AddWithValue("@description", product.description);
+                                command.Parameters.AddWithValue("@price", product.price);
+                                command.Parameters.AddWithValue("@img", product.img);
+
+                                await command.ExecuteNonQueryAsync();
+                            }
                         }
                     }
                 }
             }
         }
-
+        public async Task<List<Product>> getAllProducts()
+        {
+            return await _context.Products.ToListAsync();
+        }
+        public async Task<Product> getProductById(string id)
+        {
+            return await _context.Products.FirstOrDefaultAsync(p => p.id == id);
+        }
         public async Task RegisterUser(User user)
         {
             user.password = BCrypt.Net.BCrypt.HashPassword(user.password);

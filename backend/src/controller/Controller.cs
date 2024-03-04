@@ -17,6 +17,16 @@ namespace API
             _services = services;
         }
 
+        [HttpGet("products/all")]
+        public async Task<List<Product>> getAllProducts()
+        {
+            return await _services.getAllProducts();
+        }
+        [HttpGet("products/{id}")]
+        public async Task<Product> GetProduct(string id)
+        {
+            return await _services.getProductById(id);
+        }
         [HttpPost("register")]
         public async Task<IActionResult> RegisterUser(User user)
         {
