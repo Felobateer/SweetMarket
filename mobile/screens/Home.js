@@ -1,9 +1,13 @@
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 
-export default function Home() {
+export default function Home({ navigation }) {
   return (
     <View>
-      <Text>Home</Text>
+      <Text>HomePage</Text>
+      <Button
+        title="Go to About"
+        onPress={() => navigation.navigate("about")}
+      />
     </View>
   );
 }

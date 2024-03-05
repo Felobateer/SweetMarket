@@ -1,22 +1,22 @@
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Home from "./screens/Home";
+import About from "./screens/About";
+import Shop from "./screens/Shop";
+import Accounts from "./screens/Account";
 import tw from "twrnc";
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={tw`text-orange-500`}>
-        Open up App.js to start working on your app!
-      </Text>
-
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="home" component={Home} />
+        <Stack.Screen name="about" component={About} />
+        <Stack.Screen name="shop" component={Shop} />
+        <Stack.Screen name="accounts" component={Accounts} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
