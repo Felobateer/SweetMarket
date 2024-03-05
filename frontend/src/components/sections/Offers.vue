@@ -12,7 +12,7 @@ export default {
           description: "it's an ice cream",
           price: 2000,
           id: 0,
-          img: "../../assests/ice-cream.jpg",
+          img: "../../assets/ice-cream.jpg",
         },
       ],
     };
@@ -23,7 +23,7 @@ export default {
 <template>
   <article>
     <h1 class="text-orange-700 text-2xl mx-16">Our Offers</h1>
-    <Card :item="product[0]" />
+    <Card :item="products[0]" />
   </article>
 </template>
 
