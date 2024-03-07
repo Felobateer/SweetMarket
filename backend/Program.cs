@@ -12,22 +12,31 @@ builder.Services.AddControllers();
 builder.Configuration.AddJsonFile("appsettings.json");
 
 // Retrieve the connection string from appsettings.json
-string connectionString = builder.Configuration.GetConnectionString("Default");
-
-// Check if the connectionString is null or empty before registering it as a singleton
-if (!string.IsNullOrEmpty(connectionString))
-{
-    builder.Services.AddSingleton(connectionString);
+// string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
     builder.Services.AddSingleton<MyDb>();
     builder.Services.AddScoped<MyServices>(); 
-}
-else
-{
-    // Log or handle the error when connectionString is null or empty
-    Console.WriteLine("Error: Connection string is null or empty.");
-}
+
+// Check if the connectionString is null or empty before registering it as a singleton
+// if (!string.IsNullOrEmpty(connectionString))
+// {
+//     // builder.Services.AddSingleton(connectionString);
+// }
+// else
+// {
+//     // Log or handle the error when connectionString is null or empty
+//     Console.WriteLine("Error: Connection string is null or empty.");
+// }
 
 var app = builder.Build();
+
+using (var serviceScope = app.Services.CreateScope())
+{
+    var serviceProvider = serviceScope.ServiceProvider;
+    var myServices = serviceProvider.GetRequiredService<MyServices>();
+    var jsonDataFilePath = "./src/data/data.json";
+    var jsonData = await File.ReadAllTextAsync(jsonDataFilePath);
+    await myServices.InsertData(jsonData);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -10,10 +10,12 @@ namespace Services
     {
         private readonly string _connectionString;
         private readonly MyDb _context;
-        public MyServices(string connectionString, MyDb context)
+        private readonly IConfiguration _configuration;
+        public MyServices(string connectionString, MyDb context, IConfiguration configuration)
         {
             _connectionString = connectionString;
             _context = context;
+            _configuration = configuration;
         }
         public async Task InsertData(string jsonData)
         {
@@ -21,7 +23,7 @@ namespace Services
             if (!_context.Products.Any())
             {
                 // Products table is empty, proceed with inserting data
-                using (MySqlConnection connection = new MySqlConnection(_connectionString))
+                using (MySqlConnection connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection")))
                 {
                     await connection.OpenAsync();
                     foreach (var category in JsonSerializer.Deserialize<Dictionary<string, List<Product>>>(jsonData))
